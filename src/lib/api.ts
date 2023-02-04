@@ -295,58 +295,37 @@ export const orderAPI = {
       }
     }
   },
-}
-
-export const categoryAPI = {
-  getCategories: async () => {
-    // Mock implementation
-    return {
-      success: true,
-      data: [
-        {
-          id: '1',
-          name: 'Sneakers',
-          slug: 'sneakers',
-          description: 'Comfortable and stylish sneakers',
-          is_active: true,
-          sort_order: 1,
-          children: [],
-        },
-        {
-          id: '2',
-          name: 'Boots',
-          slug: 'boots',
-          description: 'Durable and fashionable boots',
-          is_active: true,
-          sort_order: 2,
-          children: [],
-        },
-        {
-          id: '3',
-          name: 'Dress Shoes',
-          slug: 'dress-shoes',
-          description: 'Elegant dress shoes for formal occasions',
-          is_active: true,
-          sort_order: 3,
-          children: [],
-        },
-      ]
-    }
-  },
-  
-  getCategory: async (id: string) => {
-    // Mock implementation
-    return {
-      success: true,
-      data: {
-        id,
-        name: 'Sneakers',
-        slug: 'sneakers',
-        description: 'Comfortable and stylish sneakers',
-        is_active: true,
-        sort_order: 1,
-        children: [],
-      }
-    }
-  },
 } 
+
+export const adminAPI = {
+  /**
+   * List all orders (admin only)
+   * GET /admin/orders
+   */
+  getOrders: async () => {
+    return apiRequest<any>("GET", "/admin/orders");
+  },
+
+  /**
+   * Update the status of any order (admin only)
+   * PUT /admin/orders/{order_id}/status
+   * @param orderId string
+   * @param updates object (status, payment_status, tracking_number, notes, etc.)
+   */
+  updateOrderStatus: async (
+    orderId: string,
+    updates: {
+      status?: string;
+      payment_status?: string;
+      tracking_number?: string;
+      notes?: string;
+      [key: string]: any;
+    }
+  ) => {
+    return apiRequest<any>(
+      "PUT",
+      `/admin/orders/${orderId}/status`,
+      updates
+    );
+  },
+}; 
