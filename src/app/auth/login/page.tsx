@@ -24,8 +24,13 @@ export default function LoginPage() {
 
     try {
       await login(formData)
-      // Redirect to home page after successful login
-      router.push('/')
+      // Get user from store
+      const user = useAuthStore.getState().user
+      if (user?.is_admin) {
+        router.push('/admin')
+      } else {
+        router.push('/account')
+      }
     } catch (err: any) {
       setError(err.message || 'Failed to login. Please check your credentials.')
     } finally {
