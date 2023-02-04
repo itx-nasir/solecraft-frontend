@@ -13,7 +13,6 @@ export function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Products', href: '/products' },
-    { name: 'Categories', href: '/categories' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ]
@@ -84,7 +83,7 @@ export function Header() {
                   >
                     Order History
                   </Link>
-                  {user?.is_staff && (
+                  {user?.is_admin && (
                     <Link
                       href="/admin"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
