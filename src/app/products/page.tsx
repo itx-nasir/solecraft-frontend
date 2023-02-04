@@ -30,15 +30,6 @@ export default function ProductsPage() {
       is_customizable: true,
       specifications: { material: 'Canvas', sole: 'Rubber' },
       images: ['/placeholder-shoe-1.jpg'],
-      category: {
-        id: '1',
-        name: 'Sneakers',
-        slug: 'sneakers',
-        is_active: true,
-        sort_order: 1,
-      },
-      variants: [],
-      customizations: [],
     },
     {
       id: '2',
@@ -52,15 +43,6 @@ export default function ProductsPage() {
       is_customizable: true,
       specifications: { material: 'Leather', sole: 'Rubber' },
       images: ['/placeholder-shoe-2.jpg'],
-      category: {
-        id: '2',
-        name: 'Boots',
-        slug: 'boots',
-        is_active: true,
-        sort_order: 2,
-      },
-      variants: [],
-      customizations: [],
     },
     {
       id: '3',
@@ -74,15 +56,6 @@ export default function ProductsPage() {
       is_customizable: true,
       specifications: { material: 'Leather', sole: 'Leather' },
       images: ['/placeholder-shoe-3.jpg'],
-      category: {
-        id: '3',
-        name: 'Dress Shoes',
-        slug: 'dress-shoes',
-        is_active: true,
-        sort_order: 3,
-      },
-      variants: [],
-      customizations: [],
     },
   ]
 
@@ -159,7 +132,6 @@ function ProductCard({ product, viewMode }: { product: Product; viewMode: 'grid'
                   </Link>
                 </h3>
                 <p className="text-gray-600 mb-2">{product.short_description}</p>
-                <span className="text-sm text-gray-500">{product.category.name}</span>
               </div>
               <div className="text-right">
                 <p className="text-2xl font-bold text-gray-900 mb-4">
@@ -189,7 +161,6 @@ function ProductCard({ product, viewMode }: { product: Product; viewMode: 'grid'
           </Link>
         </h3>
         <p className="text-gray-600 text-sm mb-2">{product.short_description}</p>
-        <p className="text-xs text-gray-500 mb-3">{product.category.name}</p>
         <div className="flex justify-between items-center">
           <span className="text-lg font-bold text-gray-900">
             ${product.base_price.toFixed(2)}
