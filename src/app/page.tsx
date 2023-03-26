@@ -34,57 +34,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Categories */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Shop by Category
-            </h2>
-            <p className="text-lg text-gray-600">
-              Discover our wide range of customizable footwear
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Sneakers */}
-            <div className="relative group cursor-pointer">
-              <div className="aspect-w-4 aspect-h-3 bg-gray-200 rounded-lg overflow-hidden">
-                <div className="w-full h-64 bg-gradient-to-r from-blue-400 to-blue-600"></div>
-              </div>
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-lg"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-2xl font-bold">Sneakers</h3>
-                <p className="text-sm">Comfort meets style</p>
-              </div>
-            </div>
-
-            {/* Boots */}
-            <div className="relative group cursor-pointer">
-              <div className="aspect-w-4 aspect-h-3 bg-gray-200 rounded-lg overflow-hidden">
-                <div className="w-full h-64 bg-gradient-to-r from-amber-400 to-amber-600"></div>
-              </div>
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-lg"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-2xl font-bold">Boots</h3>
-                <p className="text-sm">Rugged and durable</p>
-              </div>
-            </div>
-
-            {/* Dress Shoes */}
-            <div className="relative group cursor-pointer">
-              <div className="aspect-w-4 aspect-h-3 bg-gray-200 rounded-lg overflow-hidden">
-                <div className="w-full h-64 bg-gradient-to-r from-gray-700 to-gray-900"></div>
-              </div>
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-lg"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-2xl font-bold">Dress Shoes</h3>
-                <p className="text-sm">Elegant and refined</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Remove Shop by Category section and category cards */}
 
       {/* Featured Products */}
       <section className="py-16 bg-gray-50">
