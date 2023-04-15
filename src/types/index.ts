@@ -35,7 +35,7 @@ export interface User {
   is_guest: boolean;
   is_active: boolean;
   is_verified: boolean;
-  is_staff: boolean;
+  is_admin: boolean;
   last_login?: string;
   created_at: string;
   addresses: Address[];
@@ -73,59 +73,15 @@ export interface Product {
   meta_description?: string;
   specifications: Record<string, string>;
   images: string[];
-  category: Category;
-  variants: ProductVariant[];
-  customizations: Customization[];
-}
-
-export interface ProductVariant {
-  id: string;
-  name: string;
-  sku: string;
-  size: string;
-  color: string;
-  price: number;
-  stock_quantity: number;
-  is_active: boolean;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-  description?: string;
-  image_url?: string;
-  is_active: boolean;
-  sort_order: number;
-  parent_id?: string;
-  children?: Category[];
-}
-
-export interface Customization {
-  id: string;
-  name: string;
-  type: 'text' | 'color' | 'material' | 'size';
-  description: string;
-  price: number;
-  required: boolean;
-  options: Record<string, any>;
 }
 
 // Cart Types
 export interface CartItem {
   id: string;
-  product_variant_id: string;
+  product_id: string;
   quantity: number;
   unit_price: number;
   total_price: number;
-  customizations?: Record<string, CustomizationValue>;
-  product_variant: ProductVariant & { product: Product };
-}
-
-export interface CustomizationValue {
-  type: string;
-  value: any;
-  price: number;
 }
 
 export interface Cart {
@@ -168,12 +124,9 @@ export interface Order {
 export interface OrderItem {
   id: string;
   product_name: string;
-  variant_name: string;
-  sku: string;
   quantity: number;
   unit_price: number;
   total_price: number;
-  customizations?: Record<string, CustomizationValue>;
 }
 
 export type OrderStatus = 
@@ -225,7 +178,6 @@ export interface GuestData {
 export interface ProductFilters {
   page?: number;
   page_size?: number;
-  category_id?: string;
   is_featured?: boolean;
   min_price?: number;
   max_price?: number;
