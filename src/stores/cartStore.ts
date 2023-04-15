@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { CartItem, Product, ProductVariant } from '@/types'
+import { CartItem, Product } from '@/types'
 
 interface CartStore {
   items: CartItem[]
-  addItem: (product: Product, variant: ProductVariant, quantity: number, customizations?: any) => void
+  addItem: (product: Product, quantity: number) => void
   removeItem: (itemId: string) => void
   updateQuantity: (itemId: string, quantity: number) => void
   clearCart: () => void
@@ -17,10 +17,9 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       items: [],
       
-      addItem: (product, variant, quantity, customizations) => {
+      addItem: (product, quantity) => {
         const existingItemIndex = get().items.findIndex(
-          item => item.product_variant_id === variant.id && 
-          JSON.stringify(item.customizations) === JSON.stringify(customizations)
+          item => item.product_id === product.id
         )
         
         if (existingItemIndex > -1) {
@@ -28,7 +27,7 @@ export const useCartStore = create<CartStore>()(
           set(state => ({
             items: state.items.map((item, index) =>
               index === existingItemIndex
-                ? { ...item, quantity: item.quantity + quantity }
+                ? { ...item, quantity: item.quantity + quantity, total_price: item.unit_price * (item.quantity + quantity) }
                 : item
             )
           }))
@@ -36,14 +35,11 @@ export const useCartStore = create<CartStore>()(
           // Add new item
           const newItem: CartItem = {
             id: Date.now().toString(),
-            product_variant_id: variant.id,
+            product_id: product.id,
             quantity,
-            unit_price: variant.price,
-            total_price: variant.price * quantity,
-            customizations,
-            product_variant: { ...variant, product }
+            unit_price: product.base_price,
+            total_price: product.base_price * quantity
           }
-          
           set(state => ({
             items: [...state.items, newItem]
           }))
